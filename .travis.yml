@@ -1,9 +1,26 @@
 sudo: required
 services:
   - docker
-
 before_install:
   - docker build -t docker-ci-test -f Dockerfile.dev .
-
 script:
   - docker run docker-ci-test npm run test -- --coverage
+
+# AWS deploy
+# deploy:
+#   provider: elasticbeanstalk
+#   region: "us-west-2"
+#   app: "app-name-in-ebs"
+#   env: "Docker-env"
+#   bucket_name: "S3 bucket name"
+#   bucket_path: "$app"
+#   on:
+#     branch: master
+#   access_key_id: $AWS_ACCESS_KEY
+#   secret_access_key:
+#     secure: "$AWS_SECRET_KEY"
+deploy:
+  provider: heroku
+  app: docker-travis-react
+  api_key:
+    secure: $HEROKU_API_KEY
