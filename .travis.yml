@@ -6,21 +6,8 @@ before_install:
 script:
   - docker run docker-ci-test npm run test -- --coverage
 
-# AWS deploy
-# deploy:
-#   provider: elasticbeanstalk
-#   region: "us-west-2"
-#   app: "app-name-in-ebs"
-#   env: "Docker-env"
-#   bucket_name: "S3 bucket name"
-#   bucket_path: "$app"
-#   on:
-#     branch: master
-#   access_key_id: $AWS_ACCESS_KEY
-#   secret_access_key:
-#     secure: "$AWS_SECRET_KEY"
 deploy:
   provider: heroku
   app: docker-travis-react
   api_key:
-    secure: $HEROKU_API_KEY
+    secure: M04/FTC4UzZQ33qhjizgoClbQB2jXmG8fz3VajQiKu2FPPspMjKtE4YDYSpNHtTH9zzx1dw1n5igfoaZp0QPYzwxkdTlvmgtFmmnH8M1EQXNySVVMVjd9wJOy8XMQDZB3oJ/EgilIc4EIdlV+JQf+YVwZmbwGsJSY9j+ecd8wLYBVquVCv2iJIbmJcExqEoxGu83j/0HJg11WI6M4wA5F5/Wjd2/I66VzamOnOB2aWYGTCOGxvKSCBy//byQnNI5kH0CPu36DQnE/d5hfdmWC1xvprbAHfWEQh0pnluLpORh8iMO29/pzWwXhYMg6HadXdtozehSXBbcTitfspuKG4sN8VqMS9R4CbE5bZWhMGXVPVcT65shxpjRzVXDv3eCGslVpmZCMNx9zHxkNiXKaVgmhMnNIwuhVriWIYNVT6vmuy+rxV/KJz7cnYtyLv481h4POHB+dQrTb/CxanZZm3fOPccBIanzLju4FFzRNEC/aEzYiKgLGzP89W+XCT5IvXm4BzDK8U/uFUv8ozwSIKolwslPz2zkG6J1KvrfrHvv4Zav0ghafBt6BKCWBAgJGHzcJxm+o6s6CD0ayEdH768cpzA2q6h6gJTCmegzBd1Z5ZlJphh8vaCRsL9MQn7oyTN25cgM+akqGJt9UXcFsSlSLdvyDhrlr9/7sZDAY4s=
